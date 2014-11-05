@@ -1,4 +1,4 @@
 #!/bin/bash
 git add *
-git commit "$1"
+git commit
 git push
