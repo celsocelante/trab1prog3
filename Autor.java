@@ -9,4 +9,4 @@ public class Autor extends Colaborador {
     public void vinculaInstituicao(Instituicao inst) {
       instituicoes.add(inst);
     }
-}
+} 

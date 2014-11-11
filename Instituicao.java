@@ -6,4 +6,4 @@ public class Instituicao {
     this.nome = nome;
     this.endereco = endereco;
   }
-}
+} 

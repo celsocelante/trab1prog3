@@ -6,4 +6,4 @@ public class Colaborador {
 		this.nome = nome;
 		this.email = email;
 	}
-}
+} 
