@@ -1,6 +1,6 @@
 import java.util.*;
 public class PilhaArray<T> {
-	
+
 	private T[] itens;
 	private int tamanho;
 	private int topo;
@@ -37,6 +37,4 @@ public class PilhaArray<T> {
 		return topo > 0;
 	}
 
-} 
-	
-	
+}
