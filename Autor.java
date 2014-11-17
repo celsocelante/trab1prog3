@@ -1,3 +1,4 @@
+import java.util.*;
 public class Autor extends Colaborador {
   private Set<Instituicao> instituicoes;
 

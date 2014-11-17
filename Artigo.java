@@ -1,3 +1,4 @@
+import java.util.*;
 public class Artigo {
   private String titulo;
   private PilhaArray<Colaborador> colaboradores;
@@ -10,8 +11,8 @@ public class Artigo {
     autores = new HashSet<Autor>();
   }
 
-  public void vinculaColaborador(Colaborador colab) {
-    colaboradroes.push(colab);
+  public void vinculaColaborador(Colaborador colab) throws PilhaCheiaException{
+    colaboradores.push(colab);
   }
 
   // public void vinculaAutor(Autor

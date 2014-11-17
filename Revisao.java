@@ -1,15 +1,14 @@
-import java.util.ArrayList;
 public class Revisao{
 
 	private Artigo artigo;
-	private ArrayList<Avaliacao> avaliacoes;
+	private PilhaArray<Avaliacao> avaliacoes;
 
 	public Revisao(Artigo artigo){
 		this.artigo = artigo;
-		avaliacoes = new ArrayList<Avaliacao>(3);
+		avaliacoes = new PilhaArray<Avaliacao>(3);
 	}
 
-	public void registrarAvaliacao(Avaliacao avaliacao) throws IndexOutOfBoundsException{
-		avaliacoes.add(avaliacao);
+	public void registrarAvaliacao(Avaliacao avaliacao) throws PilhaCheiaException{
+		avaliacoes.push(avaliacao);
 	}
 }
