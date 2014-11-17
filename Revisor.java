@@ -8,4 +8,4 @@ public class Revisor extends Colaborador {
     instituicoes = new HashSet<Instituicao>();
     temas = new HashSet<Tema>();
   }
-}
+} 
