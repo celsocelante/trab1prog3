@@ -9,7 +9,7 @@ public class LeituraArquivo {
     Scanner scanner = new Scanner(new FileReader("/home/mapprado/Dropbox/Ufes/CC/PROG III/Java/trab1prog3/arquivo.csv"));
 
 
-    FileReader arquivo = new FileReader("/home/celso/trab1prog3/" + args[0]);
+    File arquivo = new File(args[0]);
     Scanner scanner = new Scanner(arquivo);
 
 
@@ -31,7 +31,7 @@ public class LeituraArquivo {
         }
         // Trata a exceção de arquivo mal formado
       } catch(NoSuchElementException e){
-        System.out.println("Arquivo com sintaxe diferente da esperada");
+        System.out.println("Erro de formatação");
         System.exit(1);
       }
 
