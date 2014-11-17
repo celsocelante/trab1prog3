@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-// Exemplo de leitura de arquivo e quebra em tokens
+// Exemplo de leitura de arquivo e quebra em tokens.
 
 public class LeituraArquivo {
   public static void main(String[] args) throws FileNotFoundException {
