@@ -6,7 +6,7 @@ import java.io.*;
 public class LeituraArquivo {
   public static void main(String[] args) throws FileNotFoundException {
 
-    FileReader arquivo = new FileReader("/home/celso/trab1prog3/" + args[0]);
+    File arquivo = new File(args[0]);
     Scanner scanner = new Scanner(arquivo);
 
     while (scanner.hasNextLine()) {
@@ -27,7 +27,7 @@ public class LeituraArquivo {
         }
         // Trata a exceção de arquivo mal formado
       } catch(NoSuchElementException e){
-        System.out.println("Arquivo com sintaxe diferente da esperada");
+        System.out.println("Erro de formatação");
         System.exit(1);
       }
 
