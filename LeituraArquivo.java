@@ -5,7 +5,7 @@ import java.io.*;
 
 public class LeituraArquivo {
   public static void main(String[] args) throws FileNotFoundException {
-    Scanner scanner = new Scanner(new FileReader("/home/celso/trab1prog3/arquivo.csv"));
+    Scanner scanner = new Scanner(new FileReader("/home/mapprado/Dropbox/Ufes/CC/PROG III/Java/trab1prog3/arquivo.csv"));
 
     while (scanner.hasNextLine()) {
       // Obtém todas as linhas do arquivo
