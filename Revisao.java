@@ -11,4 +11,8 @@ public class Revisao{
 	public void registrarAvaliacao(Avaliacao avaliacao) throws PilhaCheiaException{
 		avaliacoes.push(avaliacao);
 	}
+
+	public int getEstado(){
+		return avaliacoes.tamanho();
+	}	
 }
