@@ -6,10 +6,7 @@ import java.io.*;
 public class LeituraArquivo {
   public static void main(String[] args) throws FileNotFoundException {
 
-    Scanner scanner = new Scanner(new FileReader("/home/mapprado/Dropbox/Ufes/CC/PROG III/Java/trab1prog3/arquivo.csv"));
-
-
-    FileReader arquivo = new FileReader("/home/celso/trab1prog3/" + args[0]);
+    File arquivo = new File(args[0]);
     Scanner scanner = new Scanner(arquivo);
 
 
