@@ -30,5 +30,13 @@ public class Main {
       //tem arugmentos repetidos
       System.out.println("Argumentos incorretos");
     }
+
+    // Instancia os objetos que fazem a leitura
+    CadastroEdicao edicao = new CadastrEdicao(e);
+    CadastroTemas temas = new CadastroTemas(t);
+    CadastroPessoas pessoas = new CadastroPessoas(p);
+    CadastroArtigos artigos = new CadastroArtigos(a);
+    CadastroRevisoes revisoes = new CadastroRevisoes(r);
+
   }
 }
