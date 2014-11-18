@@ -7,7 +7,7 @@ public class Revista{
 	private Set<Artigo> artigos;
 
 
-	//Revista conjuntos de colaboradores, temas e artigos, e uma edição.
+	//Revista tem conjuntos de colaboradores, temas e artigos, e uma edição.
 	//A cada leitura de um objeto adiciona-se esse objeto primeiramente a lista
 	//correspondente na Revista
 	public Revista(String nome){
