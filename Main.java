@@ -2,6 +2,9 @@ import java.io.*;
 
 public class Main {
   public static void main(String[] args) throws ArgumentosInsuficientesException {
+
+    Revista revista = new Revista("EngSoft");
+
     String e = "NULL";
     String t = "NULL";
     String p = "NULL";
@@ -31,11 +34,15 @@ public class Main {
       System.out.println("Argumentos incorretos");
     }
 
-    // Instancia os objetos que fazem a leitura
-    CadastroEdicao edicao = new CadastrEdicao(e);
+    // Instancia os objetos que fazem a leitura. 
+    CadastroPessoas pessoas = new CadastroPessoas(p, revista);
+    //Chama o metodo de leitura dos dados/cadastro dos objetos
+    pessoas.cadastraPessoas();
+
+
     CadastroTemas temas = new CadastroTemas(t);
-    CadastroPessoas pessoas = new CadastroPessoas(p);
     CadastroArtigos artigos = new CadastroArtigos(a);
+    CadastroEdicao edicao = new CadastrEdicao(e);
     CadastroRevisoes revisoes = new CadastroRevisoes(r);
 
   }
