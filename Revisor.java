@@ -10,7 +10,7 @@ public class Revisor extends Colaborador {
   }
 
   public void vinculaInstituicao(String inst) {
-     instituicoes.add(inst)
+     instituicoes.add(inst);
   }
 
   public void vinculaTema(Tema tema){

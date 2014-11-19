@@ -6,17 +6,16 @@ public class CadastroPessoas{
   private String entrada;
   private Revista revista;
 
-  public CadastroPessoas(String entrada, Revista revista) throws FileNotFoundException {
+  public CadastroPessoas(String entrada, Revista revista){
     this.entrada = entrada;
     this.revista = revista;
   }
 
-  public void cadastraPessoas(){
+  public void cadastraPessoas() {
     File arquivo = new File(entrada);
     Scanner scanner = new Scanner(arquivo);
 
     while (scanner.hasNextLine()) {
-      try {
         // Obtém todas as linhas do arquivo
         String linha = scanner.nextLine();
         StringTokenizer token = new StringTokenizer(linha, ";");
@@ -36,19 +35,19 @@ public class CadastroPessoas{
           //Converte o codigo para um valor inteiro
           int cdg = Integer.parseInt(codigo);
           // Cadastra os colaboradores na revista
-          if(tipo.equals("A") {
-            revista.adicionaColaborador(new Autor(nome,email,endereco,codigo).vinculaInstituicao(instituicao));
+          if(tipo.equals("A")) {
+            Autor autor = new Autor(nome,email,endereco,cdg);
+            autor.vinculaInstituicao(instituicao);
+            revista.adicionaColaborador(autor);
           }
 
-          if(tipo.equals("R") {
-            revista.adicionaColaborador(new Revisor(nome,email,endereco,codigo).vinculaInstituicao(instituicao));
-          }
+          if(tipo.equals("R")) {
+            Autor autor = new Autor(nome,email,endereco,cdg);
+            autor.vinculaInstituicao(instituicao);
+            revista.adicionaColaborador(autor);
         }
 
         // Trata a exceção de arquivo mal formado
-      } catch(NoSuchElementException e){
-        System.out.println("Arquivo com sintaxe diferente da esperada");
-        System.exit(1);
       }
 
     }

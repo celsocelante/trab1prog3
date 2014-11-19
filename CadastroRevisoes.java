@@ -6,17 +6,16 @@ public class CadastroRevisoes {
   private String entrada;
   private Revista revista;
 
-  public CadastroRevisoes(String entrada, Revista revista) throws FileNotFoundException {
+  public CadastroRevisoes(String entrada, Revista revista) {
     this.entrada = entrada;
     this.revista = revista;
   }
 
-  public void cadastraRevisoes(){
+  public void cadastraRevisoes() {
     File arquivo = new File(entrada);
     Scanner scanner = new Scanner(arquivo);
 
     while (scanner.hasNextLine()) {
-      try {
         // Obtém todas as linhas do arquivo
         String linha = scanner.nextLine();
         StringTokenizer token = new StringTokenizer(linha, ";");
@@ -26,7 +25,7 @@ public class CadastroRevisoes {
           int codigo = Integer.parseInt(token.nextToken());
 
           int revisor = Integer.parseInt(token.nextToken());
-          Avaliacao avaliacao = new (revista.buscaColaborador(revisor));
+          Avaliacao avaliacao = new Avaliacao((Revisor) revista.buscaColaborador(revisor));
          
           double originalidade = Double.parseDouble(token.nextToken());
           double conteudo = Double.parseDouble(token.nextToken());
@@ -38,10 +37,7 @@ public class CadastroRevisoes {
 
         }
         // Trata a exceção de arquivo mal formado
-      } catch(NoSuchElementException e){
-        System.out.println("Arquivo com sintaxe diferente da esperada");
-        System.exit(1);
-      }
+      } 
 
     }
     scanner.close();

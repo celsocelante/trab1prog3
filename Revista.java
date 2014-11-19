@@ -1,3 +1,4 @@
+import java.util.*;
 public class Revista{
 
 	private String nome;
@@ -29,6 +30,7 @@ public class Revista{
 			if(codigo == c.getCodigo())
 				return c;
 		}
+		return null;
 	}
 	
 	public Colaborador buscaColaborador(String nome){
@@ -37,14 +39,16 @@ public class Revista{
 			if(nome.equals(c.getNome()))
 				return c;
 		}
+		return null;
 	}
 	
 	public Tema buscaTema(String titulo){
 		for(Tema t: temas){
 			// Tratar caso o colaborador com certo código não esteja no Set
-			if(titulo.equals(c.getTitulo()))
+			if(titulo.equals(t.getTitulo()))
 				return t;
 		}
+		return null;
 	}
 	
 	public void setEdicao(Edicao edicao){

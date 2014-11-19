@@ -7,25 +7,24 @@ public class CadastroTemas {
   private Revista revista;
   Tema tema;
 
-  public cadastroTemas(String entrada, Revista revista) throws FileNotFoundException {
+  public CadastroTemas(String entrada, Revista revista) {
     this.entrada = entrada;
     this.revista = revista;
   }
-  public void cadastraTemas(){
+  public void cadastraTemas() {
     File arquivo = new File(entrada);
     Scanner scanner = new Scanner(arquivo);
 
     while (scanner.hasNextLine()) {
-      try {
         // Obtém todas as linhas do arquivo
         String linha = scanner.nextLine();
         StringTokenizer token = new StringTokenizer(linha, ";");
         // Divide cada linha em tokens, de acordo com o delimitador ";"
         while (token.hasMoreTokens()) {
           // Salvo os dados em variáveis
-          String codigo = token.nextToken();
+          int codigo = Integer.parseInt(token.nextToken());
           String nome = token.nextToken();
-          String revisores = token.nextToken(); // ainda precisa quebrar os strings (separados por virgula) e jogar num Set
+          String revisores = token.nextToken(); 
 
           // Cria um novo tema e salva a referência para esse objeto
           tema = new Tema(nome,codigo);
@@ -37,17 +36,14 @@ public class CadastroTemas {
           StringTokenizer revisor = new StringTokenizer(revisores,",");
           while (revisor.hasMoreTokens()) {
             // Procura o colaborador no conjunto de colaboradores da revista
-            Colaborador colab = revista.buscaColaborador(revisor.nextToken());
+            Revisor colab = (Revisor) revista.buscaColaborador(revisor.nextToken());
             // Vincula o colaborador encontrado ao tema construído
             colab.vinculaTema(tema);
           }
 
         }
         // Trata a exceção de arquivo mal formado
-      } catch(NoSuchElementException e){
-        System.out.println("Arquivo com sintaxe diferente da esperada");
-        System.exit(1);
-      }
+      } 
 
     }
     scanner.close();
