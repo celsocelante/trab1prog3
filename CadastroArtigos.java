@@ -22,12 +22,22 @@ public class CadastroArtigos {
         // Divide cada linha em tokens, de acordo com o delimitador ";"
         while (token.hasMoreTokens()) {
           // Salvo os dados em variáveis
-          String codigo = token.nextToken();
+          int codigo = Integer.parseInteger(token.nextToken());
           String titulo = token.nextToken();
-          String revisores = token.nextToken(); // ainda precisa quebrar os strings (separados por virgula) e jogar num Set
-          String autor = token.nextToken();
 
-          // Verificar o que fazer com essas informações lidas
+			 Artigo artigo = new Artigo(codigo, titulo);          
+          
+          String autores = token.nextToken();
+          
+          // Separa os autores e vincula todos a um artigo
+          StringTokenizer token2 = new StringTokenizer(autores, "\\s*,\\s*");
+          while(token2.hasMoreTokens()){
+          	artigo.vinculaAutor(revista.buscaColaborador(Integer.parseInt(token2.nextToken())));
+          }
+          
+          int contato = Integer.parseInt(token.nextToken());
+			 artigo.setContato(revista.buscaColaborador(contato));
+			 
         }
         // Trata a exceção de arquivo mal formado
       } catch(NoSuchElementException e){

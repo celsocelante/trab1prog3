@@ -40,9 +40,10 @@ public class Main {
     pessoas.cadastraPessoas();
     CadastroTemas temas = new CadastroTemas(t, revista);
     temas.cadastroTemas();
+    CadastroEdicao edicao = new CadastroEdicao(e, revista);
+    edicao.cadastroEdicao();
     CadastroArtigos artigos = new CadastroArtigos(a);
     CadastroRevisoes revisoes = new CadastroRevisoes(r);
-    CadastroEdicao edicao = new CadastrEdicao(e);
 
   }
 }

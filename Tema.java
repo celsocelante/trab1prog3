@@ -1,9 +1,13 @@
 public class Tema {
-  private String nome;
+  private String titulo;
   private int codigo
   
-  public Tema(String nome, int codigo){
-    this.nome = nome;
+  public Tema(String titulo, int codigo){
+    this.titulo = titulo;
     this.codigo = codigo;
+  }
+  
+  public String getTitulo(){
+		return titulo;  
   }
 }

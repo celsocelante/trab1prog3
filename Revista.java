@@ -30,4 +30,25 @@ public class Revista{
 				return c;
 		}
 	}
+	
+	public Colaborador buscaColaborador(String nome){
+		for(Colaborador c: colaboradores){
+			// Tratar caso o colaborador com certo código não esteja no Set
+			if(nome.equals(c.getNome()))
+				return c;
+		}
+	}
+	
+	public Tema buscaTema(String titulo){
+		for(Tema t: temas){
+			// Tratar caso o colaborador com certo código não esteja no Set
+			if(titulo.equals(c.getTitulo()))
+				return t;
+		}
+	}
+	
+	public void setEdicao(Edicao edicao){
+		this.edicao = edicao;
+	}
+	
 }

@@ -4,9 +4,11 @@ import java.io.*;
 // Exemplo de leitura de arquivo
 public class CadastroRevisoes {
   private String entrada;
+  private Revista revista;
 
-  public CadastroREvisoes(String entrada) throws FileNotFoundException {
+  public CadastroRevisoes(String entrada, Revista revista) throws FileNotFoundException {
     this.entrada = entrada;
+    this.revista = revista;
   }
 
   File arquivo = new File(entrada);
@@ -20,11 +22,13 @@ public class CadastroRevisoes {
       // Divide cada linha em tokens, de acordo com o delimitador ";"
       while (token.hasMoreTokens()) {
         // Salvo os dados em variáveis
-        String artigo = token.nextToken();
-        String revisor = token.nextToken();
-        String originalidade = token.nextToken();
-        String conteudo = token.nextToken();
-        String apresentacao = token.nextToken();
+        int artigo = Integer.parseInt(token.nextToken());
+        int revisor = Integer.parseInt(token.nextToken());
+        double originalidade = Double.parseDouble(token.nextToken());
+        double conteudo = Double.parseDouble(token.nextToken());
+        double apresentacao = Double.parseDouble(token.nextToken());
+        
+        Revisao revisao = 
 
         // Verificar o que fazer com essas informações lidas
       }

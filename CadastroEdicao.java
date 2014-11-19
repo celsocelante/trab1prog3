@@ -4,13 +4,15 @@ import java.io.*;
 // Exemplo de leitura de arquivo
 public class CadastroEdicao {
   private String entrada;
-  private Edicao edicao;
+  private Revista revista;
 
-  public CadastroEdicao(String entrada) throws FileNotFoundException {
+  public CadastroEdicao(String entradam, Revista revista) throws FileNotFoundException {
     this.entrada = entrada;
+    this.revista = revista;
   }
 
-  File arquivo = new File(entrada);
+  public void cadastraEdicao(){
+ 	File arquivo = new File(entrada);
   Scanner scanner = new Scanner(arquivo);
 
   while (scanner.hasNext()) {
@@ -19,12 +21,14 @@ public class CadastroEdicao {
       // Obtém todas as linhas do arquivo
       String tema = scanner.next();
       String editor = scanner.next();
-      String volume = scanner.next();
-      String numero = scanner.next();              
+      int volume = Integer.parseInt(scanner.next());
+      int numero = Integer.parseInt(scanner.next());              
       String data = scanner.next();
-
-
-      //Chamar construtor de edição : Ver como tratar 
+      
+      Tema t = revista.buscaTema(tema);
+      Colaborador c = revista.buscaColaborador(editor);
+      
+      revista.setEdicao(new Edicao(volume,numero,data,t,c));
       
       // Trata a exceção de arquivo mal formado
     } catch(NoSuchElementException e){
@@ -34,4 +38,6 @@ public class CadastroEdicao {
 
   }
   scanner.close();
+  }
+  
 }
