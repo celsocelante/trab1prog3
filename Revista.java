@@ -51,4 +51,7 @@ public class Revista{
 		this.edicao = edicao;
 	}
 	
+	public Edicao getEdicao(){
+		return edicao;
+	}
 }

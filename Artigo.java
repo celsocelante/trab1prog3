@@ -3,11 +3,14 @@ public class Artigo {
   private String titulo;
   private int codigo;
   private Set<Autor> autores;
+  private Set<Avaliacao> revisao;
   private Autor contato;
+
 
   public Artigo(int codigo, String titulo) {
     this.titulo = titulo;
     autores = new HashSet<Autor>();
+    revisao = new HashSet<Avaliacao>();
   }
 
   public void vinculaAutor(Autor autor) {
@@ -16,6 +19,14 @@ public class Artigo {
   
   public void setContato(Autor autor) {
 	 contato = autor;  
+  }
+
+  public void adicionaAvaliacao(Avaliacao avaliacao){
+    revisao.add(avaliacao);
+  }
+
+  public int getCodigo(){
+    return codigo;
   }
 
 }

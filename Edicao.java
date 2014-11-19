@@ -20,4 +20,13 @@ public class Edicao{
 		submetidos.add(artigo);
 	}
 
+	public Artigo buscaArtigo(int codigo){
+		for(Artigo a : submetidos){
+			if(a.getCodigo() == codigo)
+				return a;
+		}
+	}
+
+
+
 }
