@@ -5,6 +5,8 @@ import java.io.*;
 public class CadastroTemas {
   private String entrada;
   private Revista revista;
+  Tema tema;
+
   public CadastroTemas(String entrada, Revista revista) throws FileNotFoundException {
     this.entrada = entrada;
     this.revista = revista;
@@ -25,7 +27,21 @@ public class CadastroTemas {
           String nome = token.nextToken();
           String revisores = token.nextToken(); // ainda precisa quebrar os strings (separados por virgula) e jogar num Set
 
-          // Verificar o que fazer com essas informações lidas
+          // Cria um novo tema e salva a referência para esse objeto
+          tema = new Tema(nome,codigo);
+
+          // Adiciona o tema à revista
+          revista.adicionaTema(tema);
+
+          // Quebra o string de vários revisores separados por vírgula para vinculá-los ao tema
+          StringTokenizer revisor = new StringTokenizer(revisores,",");
+          while (revisor.hasMoreTokens()) {
+            // Procura o colaborador no conjunto de colaboradores da revista
+            Colaborador temp = revista.buscaColaborador(revisor.nextToken());
+            // Vincula o colaborador encontrado ao tema construído
+            temp.vinculaTema(tema);
+          }
+
         }
         // Trata a exceção de arquivo mal formado
       } catch(NoSuchElementException e){
