@@ -41,8 +41,8 @@ public class Main {
     CadastroTemas temas = new CadastroTemas(t, revista);
     temas.cadastroTemas();
     CadastroArtigos artigos = new CadastroArtigos(a);
-    CadastroEdicao edicao = new CadastrEdicao(e);
     CadastroRevisoes revisoes = new CadastroRevisoes(r);
+    CadastroEdicao edicao = new CadastrEdicao(e);
 
   }
 }
