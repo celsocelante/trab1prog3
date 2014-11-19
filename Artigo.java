@@ -8,6 +8,7 @@ public class Artigo {
 
 
   public Artigo(int codigo, String titulo) {
+    this.codigo = codigo;
     this.titulo = titulo;
     autores = new HashSet<Autor>();
     revisao = new HashSet<Avaliacao>();

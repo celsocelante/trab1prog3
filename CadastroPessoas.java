@@ -6,12 +6,10 @@ public class CadastroPessoas{
   private String entrada;
   private Revista revista;
 
-  public CadastroPessoas(String entrada, Revista revista){
+  public CadastroPessoas(String entrada, Revista revista) throws FileNotFoundException {
     this.entrada = entrada;
     this.revista = revista;
-  }
 
-  public void cadastraPessoas() {
     File arquivo = new File(entrada);
     Scanner scanner = new Scanner(arquivo);
 
@@ -24,13 +22,13 @@ public class CadastroPessoas{
         // Divide cada linha em tokens, de acordo com o delimitador ";"
         while (token.hasMoreTokens()) {
           // Salva os dados em variáveis
-          String codigo = token.nextToken();
-          String nome = token.nextToken();
-          String email = token.nextToken();
+          String codigo = token.nextToken().trim();
+          String nome = token.nextToken().trim();
+          String email = token.nextToken().trim();
           //String senha = token.nextToken(); Não há senhas nos arquivos de entrada
-          String instituicao = token.nextToken();
-          String endereco = token.nextToken();
-          String tipo = token.nextToken();
+          String instituicao = token.nextToken().trim();
+          String endereco = token.nextToken().trim();
+          String tipo = token.nextToken().trim();
 
           //Converte o codigo para um valor inteiro
           int cdg = Integer.parseInt(codigo);
@@ -42,7 +40,7 @@ public class CadastroPessoas{
           }
 
           if(tipo.equals("R")) {
-            Autor autor = new Autor(nome,email,endereco,cdg);
+            Revisor autor = new Revisor(nome,email,endereco,cdg);
             autor.vinculaInstituicao(instituicao);
             revista.adicionaColaborador(autor);
         }
@@ -52,8 +50,7 @@ public class CadastroPessoas{
 
     }
     scanner.close();
+    revista.imprimeColaboradores();
   }
-
-
 
 }

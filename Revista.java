@@ -24,6 +24,12 @@ public class Revista{
 		colaboradores.add(colaborador);
 	}
 
+
+	public void imprimeColaboradores(){
+		for (Colaborador c : colaboradores)
+			System.out.println(c.getCodigo());
+	}
+
 	public Colaborador buscaColaborador(int codigo){
 		for(Colaborador c: colaboradores){
 			// Tratar caso o colaborador com certo código não esteja no Set

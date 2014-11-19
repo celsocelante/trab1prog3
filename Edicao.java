@@ -25,8 +25,13 @@ public class Edicao{
 			if(a.getCodigo() == codigo)
 				return a;
 		}
+		return null;
 	}
 
+	public void imprimeArtigos(){
+		for (Artigo a : submetidos)
+			System.out.println(a.getCodigo());
+	}
 
 
 }

@@ -7,11 +7,10 @@ public class CadastroTemas {
   private Revista revista;
   Tema tema;
 
-  public CadastroTemas(String entrada, Revista revista) {
+  public CadastroTemas(String entrada, Revista revista) throws FileNotFoundException {
     this.entrada = entrada;
     this.revista = revista;
-  }
-  public void cadastraTemas() {
+
     File arquivo = new File(entrada);
     Scanner scanner = new Scanner(arquivo);
 
@@ -22,9 +21,9 @@ public class CadastroTemas {
         // Divide cada linha em tokens, de acordo com o delimitador ";"
         while (token.hasMoreTokens()) {
           // Salvo os dados em variáveis
-          int codigo = Integer.parseInt(token.nextToken());
-          String nome = token.nextToken();
-          String revisores = token.nextToken(); 
+          int codigo = Integer.parseInt(token.nextToken().trim());
+          String nome = token.nextToken().trim();
+          String revisores = token.nextToken().trim(); 
 
           // Cria um novo tema e salva a referência para esse objeto
           tema = new Tema(nome,codigo);
@@ -36,7 +35,8 @@ public class CadastroTemas {
           StringTokenizer revisor = new StringTokenizer(revisores,",");
           while (revisor.hasMoreTokens()) {
             // Procura o colaborador no conjunto de colaboradores da revista
-            Revisor colab = (Revisor) revista.buscaColaborador(revisor.nextToken());
+            int r = Integer.parseInt(revisor.nextToken().trim());
+            Revisor colab = (Revisor) revista.buscaColaborador(r);
             // Vincula o colaborador encontrado ao tema construído
             colab.vinculaTema(tema);
           }
@@ -44,8 +44,6 @@ public class CadastroTemas {
         }
         // Trata a exceção de arquivo mal formado
       } 
-
+      scanner.close();
     }
-    scanner.close();
-  }
 }

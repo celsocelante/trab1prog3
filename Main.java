@@ -34,16 +34,17 @@ public class Main {
       System.out.println("Argumentos incorretos");
     }
 
-    // Instancia os objetos que fazem a leitura. 
-    CadastroPessoas pessoas = new CadastroPessoas(p, revista);
-    //Chama o metodo de leitura dos dados/cadastro dos objetos
-    pessoas.cadastraPessoas();
-    CadastroTemas temas = new CadastroTemas(t, revista);
-    temas.cadastraTemas();
-    CadastroEdicao edicao = new CadastroEdicao(e, revista);
-    edicao.cadastraEdicao();
-    CadastroArtigos artigos = new CadastroArtigos(a, revista);
-    CadastroRevisoes revisoes = new CadastroRevisoes(r, revista);
+    // Instancia os objetos que fazem a leitura
+    try {
+      CadastroPessoas pessoas = new CadastroPessoas(p, revista);
+      CadastroTemas temas = new CadastroTemas(t, revista);
+      CadastroEdicao edicao = new CadastroEdicao(e, revista);
+      CadastroArtigos artigos = new CadastroArtigos(a, revista);
+      CadastroRevisoes revisoes = new CadastroRevisoes(r, revista);
+    } catch(FileNotFoundException ex){
+      System.out.println("Sua mãe é um puta");
+    }
+    
 
   }
 }
