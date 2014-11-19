@@ -37,7 +37,7 @@ public class CadastroPessoas{
           int cdg = Integer.parseInt(codigo);
           // Cadastra os colaboradores na revista
           if(tipo.equals("A") {
-            revista.adicionaColaborador(new Autor(nome,email,endereco,codigo).vinculaInstituicao(instituicao)); // precisa criar o objeto Instituição
+            revista.adicionaColaborador(new Autor(nome,email,endereco,codigo).vinculaInstituicao(instituicao));
           }
 
           if(tipo.equals("R") {

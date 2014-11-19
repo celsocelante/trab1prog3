@@ -38,9 +38,8 @@ public class Main {
     CadastroPessoas pessoas = new CadastroPessoas(p, revista);
     //Chama o metodo de leitura dos dados/cadastro dos objetos
     pessoas.cadastraPessoas();
-
-
-    CadastroTemas temas = new CadastroTemas(t);
+    CadastroTemas temas = new CadastroTemas(t, revista);
+    temas.cadastroTemas();
     CadastroArtigos artigos = new CadastroArtigos(a);
     CadastroEdicao edicao = new CadastrEdicao(e);
     CadastroRevisoes revisoes = new CadastroRevisoes(r);

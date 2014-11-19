@@ -7,7 +7,7 @@ public class CadastroTemas {
   private Revista revista;
   Tema tema;
 
-  public CadastroTemas(String entrada, Revista revista) throws FileNotFoundException {
+  public cadastroTemas(String entrada, Revista revista) throws FileNotFoundException {
     this.entrada = entrada;
     this.revista = revista;
   }
@@ -37,9 +37,9 @@ public class CadastroTemas {
           StringTokenizer revisor = new StringTokenizer(revisores,",");
           while (revisor.hasMoreTokens()) {
             // Procura o colaborador no conjunto de colaboradores da revista
-            Colaborador temp = revista.buscaColaborador(revisor.nextToken());
+            Colaborador colab = revista.buscaColaborador(revisor.nextToken());
             // Vincula o colaborador encontrado ao tema construído
-            temp.vinculaTema(tema);
+            colab.vinculaTema(tema);
           }
 
         }
@@ -52,6 +52,4 @@ public class CadastroTemas {
     }
     scanner.close();
   }
-
-
 }
