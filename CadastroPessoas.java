@@ -11,8 +11,6 @@ public class CadastroPessoas{
     this.revista = revista;
   }
 
-
-
   public void cadastraPessoas(){
     File arquivo = new File(entrada);
     Scanner scanner = new Scanner(arquivo);
@@ -36,18 +34,16 @@ public class CadastroPessoas{
           String tipo = token.nextToken();
 
           //Converte o codigo para um valor inteiro
-          int cdg = Interger.parseInt(codigo);
+          int cdg = Integer.parseInt(codigo);
           // Cadastra os colaboradores na revista
           if(tipo.equals("A") {
-            revista.adicionaColabordor(new Autor(nome,email,endereco,cdg).vinculaInstituicao(instituicao));
+            revista.adicionaColaborador(new Autor(nome,email,endereco,codigo).vinculaInstituicao(instituicao)); // precisa criar o objeto Instituição
           }
-          
+
           if(tipo.equals("R") {
-            revista.adicionaColabordor(new Revisor(nome,email,endereco,cdg).vinculaInstituicao(instituicao));
+            revista.adicionaColaborador(new Revisor(nome,email,endereco,codigo).vinculaInstituicao(instituicao));
           }
         }
-
-
 
         // Trata a exceção de arquivo mal formado
       } catch(NoSuchElementException e){

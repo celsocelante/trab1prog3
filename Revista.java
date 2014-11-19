@@ -10,9 +10,9 @@ public class Revista{
 	//A cada leitura de um objeto adiciona-se esse objeto primeiramente a lista
 	//correspondente na Revista
 	public Revista(String nome){
-		this.nome=nome;
-		temas=new HashSet<Tema>();
-		colaboradores=new HashSet<Colaborador>();
+		this.nome = nome;
+		temas = new HashSet<Tema>();
+		colaboradores = new HashSet<Colaborador>();
 	}
 
 	public void adicionaTema(Tema tema){
@@ -21,5 +21,13 @@ public class Revista{
 
 	public void adicionaColaborador(Colaborador colaborador){
 		colaboradores.add(colaborador);
+	}
+
+	public Colaborador buscaColaborador(int codigo){
+		for(Colaborador c: colaboradores){
+			// Tratar caso o colaborador com certo código não esteja no Set
+			if(codigo == c.getCodigo())
+				return c;
+		}
 	}
 }

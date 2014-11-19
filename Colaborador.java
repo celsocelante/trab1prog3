@@ -9,4 +9,8 @@ public class Colaborador {
 		this.endereco = endereco;
 		this.codigo = codigo;
 	}
-} 
+
+	public int getCodigo(){
+		return codigo;
+	}
+}
