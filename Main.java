@@ -1,7 +1,7 @@
 import java.io.*;
 
 public class Main {
-  public static void main(String[] args) throws ArgumentosInsuficientesException {
+  public static void main(String[] args) {
 
     Revista revista = new Revista("EngeSoft");
 
@@ -13,7 +13,7 @@ public class Main {
 
     if(args.length != 10){
       // Lança exceção se a quantidade ideal de parâmetros não estiver sendo respeitada
-      throw new ArgumentosInsuficientesException();
+      System.out.println("Argumentos insuficientes");
     }
     // Verifica cada elemento do vetor à procura de flags + argumentos
     for(int i = 0; i < args.length; i++){

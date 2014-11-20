@@ -33,7 +33,7 @@ public class CadastroPessoas{
 
           //Converte o codigo para um valor inteiro
           int cdg = Integer.parseInt(codigo);
-          // Cadastra os colaboradores na revista
+          // Cadastra os colaboradores na revista, verificando se é revisor ou autor
           if(tipo.equals("A")) {
             Autor autor = new Autor(nome,email,endereco,senha,cdg);
             autor.vinculaInstituicao(instituicao);
