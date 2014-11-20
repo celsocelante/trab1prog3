@@ -8,7 +8,7 @@ public class Inconsistencia{
 	}
 
 	public String toString(){
-		return mensagem;
+		return "Erro " + tipo + ": " + mensagem;
 	}
 
 

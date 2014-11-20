@@ -1,4 +1,5 @@
 import java.util.*;
+
 public class Revista{
 
 	private String nome;
@@ -61,11 +62,15 @@ public class Revista{
 		return null;
 	}
 	
-	public void setEdicao(Edicao edicao){
+	public void setEdicao(Edicao edicao) {
 		this.edicao = edicao;
 	}
 	
 	public Edicao getEdicao(){
 		return edicao;
+	}
+
+	public Set<Inconsistencia> getInconsistencias(){
+		return inconsistencias;
 	}
 }

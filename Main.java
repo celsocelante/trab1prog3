@@ -1,4 +1,5 @@
 import java.io.*;
+import java.text.*;
 
 public class Main {
   public static void main(String[] args) {
@@ -20,11 +21,20 @@ public class Main {
     } catch(FileNotFoundException e1) { // Caso algum dos arquivos não exista
       System.out.println("Erro de I/O");
       System.exit(1); // Encerra a execução do programa
-    } catch(NumberFormatException e2){
+      } catch(NumberFormatException e2){
       System.out.println("Erro de formatação");
       System.exit(2);
+        }
+
+    try{
+      Resumo resumo = new Resumo(revista);
+      resumo.escreveResumo();
+    }catch(IOException e3){
+      System.out.println("As");
     }
 
+
+   
 
   }
 }
