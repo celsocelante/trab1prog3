@@ -35,14 +35,24 @@ public class CadastroTemas {
           StringTokenizer revisor = new StringTokenizer(revisores,",");
           while (revisor.hasMoreTokens()) {
             // Procura o colaborador no conjunto de colaboradores da revista
-            int r = Integer.parseInt(revisor.nextToken().trim());
-            Revisor colab = (Revisor) revista.buscaColaborador(r);
+            int cdg = Integer.parseInt(revisor.nextToken().trim());
+            Revisor r = (Revisor) revista.buscaColaborador(cdg);
             // Vincula o colaborador encontrado ao tema construído
-            colab.vinculaTema(tema);
+            // Trata a inconsistencia #3: não há revisor correspondente no cadastro de pessoas
+            if (r == null){
+              Inconsistencia i = new Inconsistencia("O código " + cdg + " associado ao tema " + nome + "nao corresponde a um revisor cadastrado.",3);
+              revista.adicionaInconsistencia(i);
+            }
+            else 
+              tema.vinculaRevisor(r);
+          }
+          if(tema.getQuantidadeRevisores() < 3){
+            // Trata a inconsistencia #4: tema com menos de 3 revisores
+            Inconsistencia i = new Inconsistencia("O tema " + nome + " possui apenas " + tema.getQuantidadeRevisores() + ". São necessários no minimo 3.", 4);
+            revista.adicionaInconsistencia(i);
           }
 
         }
-        // Trata a exceção de arquivo mal formado
       } 
       scanner.close();
     }

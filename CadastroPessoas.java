@@ -28,6 +28,7 @@ public class CadastroPessoas{
           //String senha = token.nextToken(); Não há senhas nos arquivos de entrada
           String instituicao = token.nextToken().trim();
           String endereco = token.nextToken().trim();
+          System.out.println(endereco);
           String tipo = token.nextToken().trim();
 
           //Converte o codigo para um valor inteiro
@@ -38,14 +39,17 @@ public class CadastroPessoas{
             autor.vinculaInstituicao(instituicao);
             revista.adicionaColaborador(autor);
           }
-
-          if(tipo.equals("R")) {
-            Revisor autor = new Revisor(nome,email,endereco,cdg);
-            autor.vinculaInstituicao(instituicao);
-            revista.adicionaColaborador(autor);
-        }
-
-        // Trata a exceção de arquivo mal formado
+          else if(tipo.equals("R")) {
+            Revisor revisor = new Revisor(nome,email,endereco,cdg);
+            revisor.vinculaInstituicao(instituicao);
+            revista.adicionaColaborador(revisor);
+          } else{
+              //Trata a inconsistencia #5 
+              Colaborador colaborador = new Colaborador(nome,email,endereco,cdg);
+              revista.adicionaColaborador(colaborador);
+              Inconsistencia i = new Inconsistencia("O tipo de" + colaborador.getNome() + "não é um tipo válido:" + tipo,5);
+              revista.adicionaInconsistencia(i);
+            }
       }
 
     }

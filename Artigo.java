@@ -3,7 +3,7 @@ public class Artigo {
   private String titulo;
   private int codigo;
   private Set<Autor> autores;
-  private Set<Avaliacao> revisao;
+  private Set<Avaliacao> revisoes;
   private Autor contato;
 
 
@@ -11,7 +11,7 @@ public class Artigo {
     this.codigo = codigo;
     this.titulo = titulo;
     autores = new HashSet<Autor>();
-    revisao = new HashSet<Avaliacao>();
+    revisoes = new HashSet<Avaliacao>();
   }
 
   public void vinculaAutor(Autor autor) {
@@ -23,11 +23,21 @@ public class Artigo {
   }
 
   public void adicionaAvaliacao(Avaliacao avaliacao){
-    revisao.add(avaliacao);
+    revisoes.add(avaliacao);
   }
 
   public int getCodigo(){
     return codigo;
   }
 
+  public String getTitulo(){
+    return titulo;
+  }
+  public boolean contemAutor(Autor autor){
+    return autores.contains(autor);
+  }
+
+  public boolean quantidadeRevisoes(){
+    return revisoes.size()==3;
+  }
 }

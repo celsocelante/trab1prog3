@@ -5,7 +5,7 @@ public class Revista{
 	private Edicao edicao;
 	private Set<Tema> temas;
 	private Set<Colaborador> colaboradores;
-
+	private Set<Inconsistencia> inconsistencias;
 
 	//Revista tem conjuntos de colaboradores, temas, e uma edição.
 	//A cada leitura de um objeto adiciona-se esse objeto primeiramente a lista
@@ -14,6 +14,7 @@ public class Revista{
 		this.nome = nome;
 		temas = new HashSet<Tema>();
 		colaboradores = new HashSet<Colaborador>();
+		inconsistencias = new HashSet<Inconsistencia>();
 	}
 
 	public void adicionaTema(Tema tema){
@@ -24,6 +25,9 @@ public class Revista{
 		colaboradores.add(colaborador);
 	}
 
+	public void adicionaInconsistencia(Inconsistencia inconsistencia){
+		inconsistencias.add(inconsistencia);
+	}
 
 	public void imprimeColaboradores(){
 		for (Colaborador c : colaboradores)

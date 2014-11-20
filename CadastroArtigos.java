@@ -29,12 +29,25 @@ public class CadastroArtigos {
         // Separa os autores e vincula todos a um artigo
         StringTokenizer token2 = new StringTokenizer(autores, ",");
         while(token2.hasMoreTokens()){
-          artigo.vinculaAutor((Autor) revista.buscaColaborador(Integer.parseInt(token2.nextToken().trim())));
+          int cdg = Integer.parseInt(token2.nextToken().trim());
+          Autor a = (Autor) revista.buscaColaborador(cdg);
+          // Trata a inconsistencia #6: autor não corresponde a um autor no cadastro de pessoas
+          if(a==null){
+            Inconsistencia i = new Inconsistencia("O código " + cdg + " associado ao artigo " + titulo + " não corresponde a um autor cadastrado.",6);
+            revista.adicionaInconsistencia(i);
+          }else
+            artigo.vinculaAutor(a);
         }
-
         if(token.hasMoreTokens()){
           int contato = Integer.parseInt(token.nextToken().trim());
-          artigo.setContato((Autor) revista.buscaColaborador(contato));
+          Autor a = (Autor) revista.buscaColaborador(contato);
+          // Trata a inconsistencia #7: Contato especificado não é um autor do artigo em questão
+          if(artigo.contemAutor(a))
+            artigo.setContato(a);       
+          else{
+            Inconsistencia i = new Inconsistencia("O código " + contato + " associado ao artigo " + titulo + " não corresponde a um autor cadastrado.",6);
+            revista.adicionaInconsistencia(i);                 
+          }
         }
 
         (revista.getEdicao()).submeterArtigo(artigo);

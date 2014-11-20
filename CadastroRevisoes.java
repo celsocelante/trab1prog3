@@ -23,20 +23,45 @@ public class CadastroRevisoes {
           int codigo = Integer.parseInt(token.nextToken().trim());
 
           int revisor = Integer.parseInt(token.nextToken().trim());
-          Avaliacao avaliacao = new Avaliacao((Revisor) revista.buscaColaborador(revisor));
-         
+          
           double originalidade = Double.parseDouble(token.nextToken().replace(',', '.').trim());
           double conteudo = Double.parseDouble(token.nextToken().replace(',', '.').trim());
           double apresentacao = Double.parseDouble(token.nextToken().replace(',', '.').trim());
           
-          avaliacao.atribuirNota(originalidade,conteudo,apresentacao);
-          Artigo artigo = (revista.getEdicao()).buscaArtigo(codigo);
-          artigo.adicionaAvaliacao(avaliacao);
+          Revisor r = (Revisor) revista.buscaColaborador(revisor);
+          // Trata inconsistencia #8: revisor em revisoes.csv não está cadastrado
+          if(r==null){
+            Inconsistencia i = new Inconsistencia("O código " + revisor + " encontrado no cadastro de revisões não corresponde a um revisor cadastrado", 8);
+            revista.adicionaInconsistencia(i);
+          }
+          else{
+            Avaliacao avaliacao = new Avaliacao(r);
+            avaliacao.atribuirNota(originalidade,conteudo,apresentacao);
+
+            Artigo artigo = (revista.getEdicao()).buscaArtigo(codigo);
+
+            if (artigo==null){
+              // Trata insconsistencia #9: código do artigo não está cadastrado em artigos submetidos à edição
+              Inconsistencia i = new Inconsistencia("O código " + codigo + " encontrado no cadastro de revisões não corresponde a um artigo cadastrado", 9);
+              revista.adicionaInconsistencia(i);
+            }else{
+              artigo.adicionaAvaliacao(avaliacao);
+              
+
+              // Trata inconsistencia #10: revisor não habilitado a revisar artigo sob tema da edição
+              if(!(revista.getEdicao().getTema().contemRevisor(r))){
+                Inconsistencia i = new Inconsistencia("O revisor " + r.getNome() + " avaliou o artigo " + artigo.getTitulo() + ", porém ele não consta como apto a avaliar o tema " + revista.getEdicao().getTema() + ", desta edição.",10);
+                revista.adicionaInconsistencia(i);
+              }
+            }
+          }
 
         }
         // Trata a exceção de arquivo mal formado
       } 
       scanner.close();
+
+      // Trata inconsistencia #11: artigos revisados com menos ou mais de 3 avaliações
     }
 /*
   public static void main(String[] args){
