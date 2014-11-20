@@ -17,9 +17,12 @@ public class Main {
       CadastroArtigos artigos = new CadastroArtigos(entradas[3], revista);
       CadastroRevisoes revisoes = new CadastroRevisoes(entradas[4], revista);
 
-    } catch(FileNotFoundException ex) { // Caso algum dos arquivos não exista
+    } catch(FileNotFoundException e1) { // Caso algum dos arquivos não exista
       System.out.println("Erro de I/O");
       System.exit(1); // Encerra a execução do programa
+    } catch(NumberFormatException e2){
+      System.out.println("Erro de formatação");
+      System.exit(2);
     }
 
 
