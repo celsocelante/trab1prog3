@@ -40,4 +40,8 @@ public class Artigo {
   public boolean quantidadeRevisoes(){
     return revisoes.size()==3;
   }
+
+  public int getQuantidadeRevisoes(){
+    return revisoes.size();
+  }
 }

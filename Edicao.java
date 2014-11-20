@@ -5,7 +5,6 @@ public class Edicao{
 	private String data;
 	private Tema tema;
 	private Set<Artigo> submetidos;
-	private Set<Artigo> avaliados;
 	private Colaborador editorChefe;
 
 	public Edicao(int volume, int numero, String data, Tema tema, Colaborador editorChefe){
@@ -15,7 +14,6 @@ public class Edicao{
 		this.tema = tema;
 		this.editorChefe = editorChefe;
 		submetidos = new HashSet<Artigo>();
-		avaliados = new HashSet<Artigo>();
 	}
 
 	public void submeterArtigo(Artigo artigo){
@@ -37,6 +35,10 @@ public class Edicao{
 
 	public Tema getTema(){
 		return tema;
+	}
+
+	public Set<Artigo> getArtigos(){
+		return submetidos;
 	}
 
 }

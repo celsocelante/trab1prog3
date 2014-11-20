@@ -13,11 +13,12 @@ public class CadastroTemas {
 
     File arquivo = new File(entrada);
     Scanner scanner = new Scanner(arquivo);
-
+    String cabecalho = scanner.nextLine();
+    
     while (scanner.hasNextLine()) {
         // Obtém todas as linhas do arquivo
         String linha = scanner.nextLine();
-        StringTokenizer token = new StringTokenizer(linha, ";");
+        NoncollapsingStringTokenizer token = new NoncollapsingStringTokenizer(linha, ";");
         // Divide cada linha em tokens, de acordo com o delimitador ";"
         while (token.hasMoreTokens()) {
           // Salvo os dados em variáveis
@@ -32,7 +33,7 @@ public class CadastroTemas {
           revista.adicionaTema(tema);
 
           // Quebra o string de vários revisores separados por vírgula para vinculá-los ao tema
-          StringTokenizer revisor = new StringTokenizer(revisores,",");
+          NoncollapsingStringTokenizer revisor = new NoncollapsingStringTokenizer(revisores,",");
           while (revisor.hasMoreTokens()) {
             // Procura o colaborador no conjunto de colaboradores da revista
             int cdg = Integer.parseInt(revisor.nextToken().trim());

@@ -12,11 +12,12 @@ public class CadastroRevisoes {
 
     File arquivo = new File(entrada);
     Scanner scanner = new Scanner(arquivo);
-
+    String cabecalho = scanner.nextLine();
+    
     while (scanner.hasNextLine()) {
         // Obtém todas as linhas do arquivo
         String linha = scanner.nextLine().trim();
-        StringTokenizer token = new StringTokenizer(linha, ";");
+        NoncollapsingStringTokenizer token = new NoncollapsingStringTokenizer(linha, ";");
         // Divide cada linha em tokens, de acordo com o delimitador ";"
         while (token.hasMoreTokens()) {
           // Salvo os dados em variáveis
@@ -62,13 +63,12 @@ public class CadastroRevisoes {
       scanner.close();
 
       // Trata inconsistencia #11: artigos revisados com menos ou mais de 3 avaliações
+      for(Artigo a : revista.getEdicao().getArtigos()){
+        if(!(a.quantidadeRevisoes())){
+          Inconsistencia i = new Inconsistencia("O artigo " + a.getTitulo() + " possui" + a.getQuantidadeRevisoes() + " revisões. Cada artigo deve conter exatamente 3 revisões.", 11);
+          revista.adicionaInconsistencia(i);
+        }
+      }
     }
-/*
-  public static void main(String[] args){
 
-  }
-
-  public void cadastraRevisoes() {
-    
-  }*/
 }

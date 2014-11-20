@@ -12,11 +12,12 @@ public class CadastroArtigos {
 
     File arquivo = new File(entrada);
     Scanner scanner = new Scanner(arquivo);
-
+    String cabecalho = scanner.nextLine();
+    
     while (scanner.hasNextLine()) {
       // Obtém todas as linhas do arquivo
       String linha = scanner.nextLine();
-      StringTokenizer token = new StringTokenizer(linha, ";");
+      NoncollapsingStringTokenizer token = new NoncollapsingStringTokenizer(linha, ";");
       // Divide cada linha em tokens, de acordo com o delimitador ";"
       while (token.hasMoreTokens()) {
         // Salvo os dados em variáveis
@@ -27,7 +28,7 @@ public class CadastroArtigos {
         String autores = token.nextToken().trim();
 
         // Separa os autores e vincula todos a um artigo
-        StringTokenizer token2 = new StringTokenizer(autores, ",");
+        NoncollapsingStringTokenizer token2 = new NoncollapsingStringTokenizer(autores, ",");
         while(token2.hasMoreTokens()){
           int cdg = Integer.parseInt(token2.nextToken().trim());
           Autor a = (Autor) revista.buscaColaborador(cdg);
