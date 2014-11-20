@@ -3,7 +3,7 @@ import java.io.*;
 public class Main {
   public static void main(String[] args) throws ArgumentosInsuficientesException {
 
-    Revista revista = new Revista("EngSoft");
+    Revista revista = new Revista("EngeSoft");
 
     String e = "NULL";
     String t = "NULL";
@@ -42,9 +42,9 @@ public class Main {
       CadastroArtigos artigos = new CadastroArtigos(a, revista);
       CadastroRevisoes revisoes = new CadastroRevisoes(r, revista);
     } catch(FileNotFoundException ex){
-      System.out.println("Sua mãe é um puta");
+      System.out.println("Algum dos arquivos não existe"); // Tratar esta exceção
     }
-    
+
 
   }
 }

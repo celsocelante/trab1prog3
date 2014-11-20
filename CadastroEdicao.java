@@ -19,21 +19,17 @@ public class CadastroEdicao {
       String tema = scanner.nextLine().trim();
       String editor = scanner.nextLine().trim();
       int volume = Integer.parseInt(scanner.nextLine().trim());
-      int numero = Integer.parseInt(scanner.nextLine().trim());              
+      int numero = Integer.parseInt(scanner.nextLine().trim());
       String data = scanner.nextLine().trim();
-      
+
       Tema t = revista.buscaTema(tema);
       Colaborador c = revista.buscaColaborador(editor);
-      
+
       revista.setEdicao(new Edicao(volume,numero,data,t,c));
-      
+
       // Trata a exceção de arquivo mal formado
     }
     scanner.close();
   }
-/*
-  public void cadastraEdicao() {
-   	
-  }*/
-  
+
 }
