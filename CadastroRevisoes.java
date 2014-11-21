@@ -40,6 +40,8 @@ public class CadastroRevisoes {
             avaliacao.atribuirNota(originalidade,conteudo,apresentacao);
 
             Artigo artigo = (revista.getEdicao()).buscaArtigo(codigo);
+            // Adiciona artigo à lista de artigos revisados por este revisor
+            r.vinculaRevisao(artigo);
 
             if (artigo==null){
               // Trata insconsistencia #9: código do artigo não está cadastrado em artigos submetidos à edição

@@ -1,13 +1,12 @@
 import java.io.*;
-
+import java.text.*;
+import java.util.*;
 public class Resumo{
 
 	private Revista revista;
 	
 	public Resumo(Revista revista) {
 		this.revista = revista;
-
-		
 	}
 
 	public void escreveResumo() throws IOException {
@@ -20,18 +19,43 @@ public class Resumo{
 		buffer.write("EngeSoft, num. " + edicao.getNumero() + ", volume " + edicao.getVolume() + " - " + edicao.getData());
 		buffer.newLine();
 		
-		buffer.write("Tema: " + edicao.getTema().getTitulo());
-		buffer.newLine();
+		if(edicao.getTema()!=null){
+			buffer.write("Tema: " + edicao.getTema().getTitulo());
+			buffer.newLine();
+		}
 
-		buffer.write("Editor-chefe: " + edicao.getEditorChefe().getNome());
+		if(edicao.getEditorChefe()!=null){
+			buffer.write("Editor-chefe: " + edicao.getEditorChefe().getNome());
+		}
+		buffer.newLine();		
 		buffer.newLine();
 
 		buffer.write("Consistência dos dados:");
-		
-		for(Inconsistencia i : revista.getInconsistencias()){
-			buffer.write(i.toString());
+		buffer.newLine();
+		if(!revista.getInconsistencias().isEmpty())
+			for(Inconsistencia i : revista.getInconsistencias()){
+			buffer.write("- "+ i.toString());
 			buffer.newLine();
+			}
+		else{
+			buffer.write("- Nenhum problema encontrado.");
+			buffer.newLine();
+			buffer.newLine();
+
+			buffer.write("Artigos submetidos: " + revista.getEdicao().getArtigos().size());
+			buffer.newLine();
+			buffer.write("Revisores capacitados: " + revista.getEdicao().getTema().getQuantidadeRevisores());
+			buffer.newLine();
+			buffer.write("Revisores envolvidos: " + revista.getRevisoresEnvolvidos());
+			buffer.newLine();
+			Locale.setDefault(new Locale("pt", "BR")); 
+			DecimalFormat df = new DecimalFormat("###,##"); 
+			double media = revista.getArtigosRevisados()/revista.getRevisoresEnvolvidos();
+			df.format(media); 
+
+			buffer.write("Média artigos/revisor: " + media);
 		}
+		
 		buffer.close();
 	}
 

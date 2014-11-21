@@ -29,8 +29,12 @@ public class Main {
     try{
       Resumo resumo = new Resumo(revista);
       resumo.escreveResumo();
+
+      RelatorioRevisores relatRevisores = new RelatorioRevisores(revista);
+      relatRevisores.escreveRelatorio();
+      
     }catch(IOException e3){
-      System.out.println("As");
+      System.out.println("Erro de I/O");
     }
 
 

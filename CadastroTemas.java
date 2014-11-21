@@ -37,15 +37,17 @@ public class CadastroTemas {
           while (revisor.hasMoreTokens()) {
             // Procura o colaborador no conjunto de colaboradores da revista
             int cdg = Integer.parseInt(revisor.nextToken().trim());
-            Revisor r = (Revisor) revista.buscaColaborador(cdg);
+            Colaborador c = revista.buscaColaborador(cdg);
             // Vincula o colaborador encontrado ao tema construído
             // Trata a inconsistencia #3: não há revisor correspondente no cadastro de pessoas
-            if (r == null){
+            if (c == null || c instanceof Autor){
               Inconsistencia i = new Inconsistencia("O código " + cdg + " associado ao tema " + nome + "nao corresponde a um revisor cadastrado.",3);
               revista.adicionaInconsistencia(i);
             }
-            else 
+            else{ 
+              Revisor r = (Revisor)c;
               tema.vinculaRevisor(r);
+            }
           }
           if(tema.getQuantidadeRevisores() < 3){
             // Trata a inconsistencia #4: tema com menos de 3 revisores

@@ -35,28 +35,38 @@ public class CadastroArtigos {
 
           int cdg = Integer.parseInt(token2.nextToken().trim());
 
-          Autor a = (Autor) revista.buscaColaborador(cdg);
+          Colaborador c = revista.buscaColaborador(cdg);
 
-          System.out.println(a.getNome());
+          System.out.println(c.getNome());
           // Trata a inconsistencia #6: autor não corresponde a um autor no cadastro de pessoas
-          if(a==null){
+          if(c==null || !(c instanceof Autor)){
             Inconsistencia i = new Inconsistencia("O código " + cdg + " associado ao artigo " + titulo + " não corresponde a um autor cadastrado.",6);
             revista.adicionaInconsistencia(i);
-          }else
-            artigo.vinculaAutor(a);
+          }else{
+            Autor autor = (Autor)c;
+            artigo.vinculaAutor(autor);
+           }
         }
-        if(token.hasMoreTokens()){/////////////////*/*/*//*/*/*/*/*/*/*EEROROROR
+
+        if(token.hasMoreTokens()){
           int contato = Integer.parseInt(token.nextToken().trim());
-          System.out.println("asdsadas12321asdas"+contato);
-          Autor a = (Autor) revista.buscaColaborador(contato);
-          // Trata a inconsistencia #7: Contato especificado não é um autor do artigo em questão
-          if(artigo.contemAutor(a))
-            artigo.setContato(a);       
-          else{
+          
+          Colaborador c = revista.buscaColaborador(contato);
+          if(c==null || !(c instanceof Autor)){
+            Inconsistencia i = new Inconsistencia("O código " + codigo + " associado ao artigo " + titulo + " não corresponde a um autor cadastrado.",6);
+            revista.adicionaInconsistencia(i);
+          }
+          else {
+            Autor autor = (Autor)c;
+            if(artigo.contemAutor(autor))
+              artigo.setContato(autor);
+            else{
             Inconsistencia i = new Inconsistencia("O código " + contato + " associado ao artigo " + titulo + " não corresponde a um autor cadastrado.",6);
-            revista.adicionaInconsistencia(i);                 
+            revista.adicionaInconsistencia(i);
+            }
           }
         }
+        System.out.println(revista.getEdicao().getTema().getTitulo());
 
         (revista.getEdicao()).submeterArtigo(artigo);
 
