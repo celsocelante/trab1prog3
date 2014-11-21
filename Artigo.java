@@ -42,6 +42,19 @@ public class Artigo implements Comparable<Artigo> {
     return contato.getNome();
   }
 
+<<<<<<< HEAD
+  
+
+  public boolean contemAutor(Autor autor) {
+    return autores.contains(autor);
+  }
+
+  public boolean quantidadeRevisoes() {
+    return revisoes.size()==3;
+  }
+
+=======
+>>>>>>> 0bd4fd0f4912d61a7a0ecc5540ead7a2c1556394
   public int getQuantidadeRevisoes() {
     return revisoes.size();
   }
@@ -52,6 +65,6 @@ public class Artigo implements Comparable<Artigo> {
 
   // Método para ordenação
   public int compareTo(Artigo a) {
-    return this.titulo.compareTo(a.getTitulo());
+    return revisoes.getMedia().compareTo(a.)
   }  
 }
