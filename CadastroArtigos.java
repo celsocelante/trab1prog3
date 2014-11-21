@@ -30,7 +30,7 @@ public class CadastroArtigos {
 
         // Separa os autores e vincula todos a um artigo
         NoncollapsingStringTokenizer token2 = new NoncollapsingStringTokenizer(autores, ",");
-        while(token2.hasMoreTokens()){
+        while (token2.hasMoreTokens()){
 
 
           int cdg = Integer.parseInt(token2.nextToken().trim());
@@ -48,19 +48,18 @@ public class CadastroArtigos {
            }
         }
 
-        if(token.hasMoreTokens()){
+        if (token.hasMoreTokens()) {
           int contato = Integer.parseInt(token.nextToken().trim());
           
           Colaborador c = revista.buscaColaborador(contato);
           if(c==null || !(c instanceof Autor)){
             Inconsistencia i = new Inconsistencia("O código " + codigo + " associado ao artigo " + titulo + " não corresponde a um autor cadastrado.",6);
             revista.adicionaInconsistencia(i);
-          }
-          else {
-            Autor autor = (Autor)c;
-            if(artigo.contemAutor(autor))
+          } else {
+            Autor autor = (Autor) c;
+            if (artigo.contemAutor(autor))
               artigo.setContato(autor);
-            else{
+            else {
             Inconsistencia i = new Inconsistencia("O código " + contato + " associado ao artigo " + titulo + " não corresponde a um autor cadastrado.",6);
             revista.adicionaInconsistencia(i);
             }

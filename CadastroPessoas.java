@@ -31,7 +31,7 @@ public class CadastroPessoas{
           String endereco = token.nextToken().trim();
           String tipo = token.nextToken().trim();
 
-          //Converte o codigo para um valor inteiro
+          // Converte o codigo para um valor inteiro
           int cdg = Integer.parseInt(codigo);
           // Cadastra os colaboradores na revista, verificando se é revisor ou autor
           if(tipo.equals("A")) {
@@ -39,12 +39,12 @@ public class CadastroPessoas{
             autor.vinculaInstituicao(instituicao);
             revista.adicionaColaborador(autor);
           }
-          else if(tipo.equals("R")) {
+          else if (tipo.equals("R")) {
             Revisor revisor = new Revisor(nome,email,endereco,senha,cdg);
             revisor.vinculaInstituicao(instituicao);
             revista.adicionaColaborador(revisor);
-          } else{
-              //Trata a inconsistencia #5 
+          } else {
+              // Trata a inconsistencia #5 
               Colaborador colaborador = new Colaborador(nome,email,endereco,senha,cdg);
               revista.adicionaColaborador(colaborador);
               Inconsistencia i = new Inconsistencia("O tipo de" + colaborador.getNome() + "não é um tipo válido:" + tipo,5);

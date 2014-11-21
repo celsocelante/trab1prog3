@@ -31,11 +31,11 @@ public class CadastroRevisoes {
           
           Revisor r = (Revisor) revista.buscaColaborador(revisor);
           // Trata inconsistencia #8: revisor em revisoes.csv não está cadastrado
-          if(r==null){
+          if(r == null) {
             Inconsistencia i = new Inconsistencia("O código " + revisor + " encontrado no cadastro de revisões não corresponde a um revisor cadastrado", 8);
             revista.adicionaInconsistencia(i);
           }
-          else{
+          else {
             Avaliacao avaliacao = new Avaliacao(r);
             avaliacao.atribuirNota(originalidade,conteudo,apresentacao);
 
@@ -43,11 +43,11 @@ public class CadastroRevisoes {
             // Adiciona artigo à lista de artigos revisados por este revisor
             r.vinculaRevisao(artigo);
 
-            if (artigo==null){
+            if (artigo == null) {
               // Trata insconsistencia #9: código do artigo não está cadastrado em artigos submetidos à edição
               Inconsistencia i = new Inconsistencia("O código " + codigo + " encontrado no cadastro de revisões não corresponde a um artigo cadastrado", 9);
               revista.adicionaInconsistencia(i);
-            }else{
+            } else {
               artigo.adicionaAvaliacao(avaliacao);
               
 
@@ -60,7 +60,6 @@ public class CadastroRevisoes {
           }
 
         }
-        // Trata a exceção de arquivo mal formado
       } 
       scanner.close();
 

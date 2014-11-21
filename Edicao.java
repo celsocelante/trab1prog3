@@ -14,17 +14,22 @@ public class Edicao{
 		this.volume = volume;
 		this.numero = numero;
 
-		try{
+		try {
+		// Obtém a data no string de acordo com o formato espeficado
 		DateFormat formato = new SimpleDateFormat("dd/MM/yy");
+		// Converte para o formato padrão de datas
 		this.data = formato.parse(data);
 
 		Calendar calendario = new GregorianCalendar();
 		calendario.setTime(this.data);
+		// Retorna somente o inteiro referente ao mês
 		int mes = calendario.get(Calendar.MONTH);
+		// Retorna somente o inteiro referente ao ano
 		int ano = calendario.get(Calendar.YEAR);
 		
-		String m="";
-		switch(mes){
+		String m;
+		// De acordo com o inteiro do mês, escolhe-se o nome do mês
+		switch(mes) {
 			case 0: m = "Janeiro"; break;
 			case 1: m = "Feveira"; break;
 			case 2: m = "Março"; break;
@@ -38,10 +43,10 @@ public class Edicao{
 			case 10: m = "Novembro"; break;
 			case 11: m = "Dezembro"; break;
 		}
-		 
+		// Contrói string que exibe a data de forma amigável
 		mesAno = m + " de " + ano;
 
-		}catch(ParseException e){
+		} catch(ParseException e) {
 			e.printStackTrace();
 		}
 
@@ -50,48 +55,48 @@ public class Edicao{
 		this.editorChefe = editorChefe;
 		submetidos = new HashSet<Artigo>();
 	}
-
-	public void submeterArtigo(Artigo artigo){
+	// Adiciona um artigo lido ao conjunto de artigos submetidos
+	public void submeterArtigo(Artigo artigo) {
 		submetidos.add(artigo);
 	}
-
-	public Artigo buscaArtigo(int codigo){
+	// Busca, pelo código, um artigo no conjunto de artigos submetidos
+	public Artigo buscaArtigo(int codigo) {
 		for(Artigo a : submetidos){
 			if(a.getCodigo() == codigo)
 				return a;
 		}
 		return null;
 	}
+	// --------------------------------------------
+	public void imprimeArtigos() { // REMOVER 
+		for (Artigo a : submetidos)
+			System.out.println(a.getCodigo());
+	}
+	// --------------------------------------------
 
-
-	public Tema getTema(){
+	// Getters e setters
+	public Tema getTema() {
 		return tema;
 	}
 
-	public int getNumero(){
+	public int getNumero() {
 		return numero;
 	}
 
-	public int getVolume(){
+	public int getVolume() {
 		return volume;
 	}
 
-	public String getData(){
+	public String getData() {
 		return mesAno;
 	}
 
-	public Colaborador getEditorChefe(){
+	public Colaborador getEditorChefe() {
 		return editorChefe;
 	}
 
-	public Set<Artigo> getArtigos(){
+	public Set<Artigo> getArtigos() {
 		return submetidos;
-	}
-
-
-	public void imprimeArtigos(){
-		for (Artigo a : submetidos)
-			System.out.println(a.getCodigo());
 	}
 
 }
