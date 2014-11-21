@@ -19,12 +19,12 @@ public class Resumo{
 		buffer.write("EngeSoft, num. " + edicao.getNumero() + ", volume " + edicao.getVolume() + " - " + edicao.getData());
 		buffer.newLine();
 		
-		if(edicao.getTema()!=null){
+		if(edicao.getTema()!=null) {
 			buffer.write("Tema: " + edicao.getTema().getTitulo());
 			buffer.newLine();
 		}
 
-		if(edicao.getEditorChefe()!=null){
+		if(edicao.getEditorChefe()!=null) {
 			buffer.write("Editor-chefe: " + edicao.getEditorChefe().getNome());
 		}
 		buffer.newLine();		
@@ -37,7 +37,7 @@ public class Resumo{
 			buffer.write("- "+ i.toString());
 			buffer.newLine();
 			}
-		else{
+		else {
 			buffer.write("- Nenhum problema encontrado.");
 			buffer.newLine();
 			buffer.newLine();

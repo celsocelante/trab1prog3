@@ -11,7 +11,7 @@ public class Artigo implements Comparable<Artigo> {
     this.codigo = codigo;
     this.titulo = titulo;
     autores = new HashSet<Autor>();
-    revisoes = new HashSet<Avaliacao>();
+    revisoes = new TreeSet<Avaliacao>();
   }
 
   public void vinculaAutor(Autor autor) {
@@ -22,26 +22,35 @@ public class Artigo implements Comparable<Artigo> {
 	 contato = autor;  
   }
 
-  public void adicionaAvaliacao(Avaliacao avaliacao){
+  public void adicionaAvaliacao(Avaliacao avaliacao) {
     revisoes.add(avaliacao);
   }
 
-  public int getCodigo(){
+  public int getCodigo() {
     return codigo;
   }
 
-  public String getTitulo(){
+  public String getTitulo() {
     return titulo;
   }
-  public boolean contemAutor(Autor autor){
+
+  public String getContato() {
+    return contato.getNome();
+  }
+
+  public boolean contemAutor(Autor autor) {
     return autores.contains(autor);
   }
 
-  public boolean quantidadeRevisoes(){
+  public boolean quantidadeRevisoes() {
     return revisoes.size()==3;
   }
 
-  public int getQuantidadeRevisoes(){
+  public int getQuantidadeRevisoes() {
     return revisoes.size();
   }
+
+  public int compareTo(Artigo a) {
+    return this.titulo.compareTo(a.getTitulo());
+  }  
 }
