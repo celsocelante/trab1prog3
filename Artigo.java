@@ -42,8 +42,9 @@ public class Artigo implements Comparable<Artigo> {
     return contato.getNome();
   }
 
-<<<<<<< HEAD
-  
+  public Set<Avaliacao> getRevisao(){
+    return revisoes;
+  }
 
   public boolean contemAutor(Autor autor) {
     return autores.contains(autor);
@@ -53,8 +54,14 @@ public class Artigo implements Comparable<Artigo> {
     return revisoes.size()==3;
   }
 
-=======
->>>>>>> 0bd4fd0f4912d61a7a0ecc5540ead7a2c1556394
+  public Double getMedia(){
+    Double media;
+    for(Avaliacao a : revisoes)
+      media+=a.getSomaNotas();
+
+    return media;
+  }
+
   public int getQuantidadeRevisoes() {
     return revisoes.size();
   }
@@ -64,7 +71,7 @@ public class Artigo implements Comparable<Artigo> {
   }
 
   // Método para ordenação
-  public int compareTo(Artigo a) {
-    return revisoes.getMedia().compareTo(a.)
+  public int compareTo(Artigo artigo) {
+    return -1*getMedia().compareTo(artigo.getMedia());
   }  
 }

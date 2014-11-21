@@ -11,8 +11,14 @@ public class RelatorioRevisores{
 		FileWriter relatorio = new FileWriter("relat-revisores.csv");
 		BufferedWriter buffer = new BufferedWriter(relatorio);
 
-		for(Artigo a : 
-		buffer.write();
+		for(Artigo artigo : revista.getEdicao().getArtigos()){
+			buffer.write(artigo.getTitulo() + ";" + artigo.getContato() + ";" + artigo.getMedia() + ";");
+			for(Avaliacao avaliacao : artigo.getRevisao())
+				buffer.write(avaliacao.getRevisor().getNome() + ";" );	
+			
+		}
+
+		
 		buffer.close();
 	}
 }
