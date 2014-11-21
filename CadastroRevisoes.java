@@ -1,7 +1,6 @@
 import java.util.*;
 import java.io.*;
 
-// Exemplo de leitura de arquivo
 public class CadastroRevisoes {
   private String entrada;
   private Revista revista;

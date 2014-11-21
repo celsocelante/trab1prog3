@@ -32,25 +32,30 @@ public class Resumo{
 
 		buffer.write("Consistência dos dados:");
 		buffer.newLine();
-		if(!revista.getInconsistencias().isEmpty())
+		if (!revista.getInconsistencias().isEmpty())
+			// Imprime no arquivo de saída todas as inconsistências armazenadas no objeto revista
 			for(Inconsistencia i : revista.getInconsistencias()){
 			buffer.write("- "+ i.toString());
 			buffer.newLine();
 			}
 		else {
+			// Caso não haja qualquer inconsistência, uma mensagem informando a situação é inserida no arquivo
 			buffer.write("- Nenhum problema encontrado.");
 			buffer.newLine();
 			buffer.newLine();
 
+			// Insere no arquivo a quantidade de artigos submetidos, revisoes capacitados e envolvidos
 			buffer.write("Artigos submetidos: " + revista.getEdicao().getArtigos().size());
 			buffer.newLine();
 			buffer.write("Revisores capacitados: " + revista.getEdicao().getTema().getQuantidadeRevisores());
 			buffer.newLine();
 			buffer.write("Revisores envolvidos: " + revista.getRevisoresEnvolvidos());
 			buffer.newLine();
+			// Formata os número em padrão americano (1,111.11) para o brasileiro (1.111,11), arredondando para duas casas depois da vírgula
 			NumberFormat nf = new DecimalFormat("###0.00", new DecimalFormatSymbols (new Locale("pt","BR")));
 			double media = revista.getArtigosRevisados()/revista.getRevisoresEnvolvidos();
 			
+			// Insere no arquivo de saída a média de artigos por revisões
 			buffer.write("Média artigos/revisor: " + nf.format(media));
 		}
 		

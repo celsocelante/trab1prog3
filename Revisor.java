@@ -8,15 +8,16 @@ public class Revisor extends Colaborador {
     instituicoes = new HashSet<String>();
     revisoes = new TreeSet<Artigo>();
   }
-
+  // Adiciona uma instituição ao conjunto de instituições
   public void vinculaInstituicao(String inst) {
      instituicoes.add(inst);
   }
-
-  public void vinculaRevisao(Artigo artigo){
+  // Adiciona um artigo ao conjuntos de artigos para revisão
+  public void vinculaRevisao(Artigo artigo) {
   	revisoes.add(artigo);
   }
 
+  // Getters
   public Set<Artigo> getRevisoes() {
   	return revisoes;
   }

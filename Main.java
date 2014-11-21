@@ -6,9 +6,10 @@ public class Main {
 
     Revista revista = new Revista("EngeSoft");
 
-    Leitura leitura = new Leitura(args);
-    String[] entradas = leitura.retornaEntradas();
+    Leitura leitura = new InterpretadorDeArgumentos(args);
 
+    // Retorna, depois de interpretado, os nomes dos arquivos de entrada setados por parâmetros
+    String[] entradas = leitura.retornaEntradas();
     
     try {
       // Instancia os objetos que fazem a leitura
@@ -18,15 +19,17 @@ public class Main {
       CadastroArtigos artigos = new CadastroArtigos(entradas[3], revista);
       CadastroRevisoes revisoes = new CadastroRevisoes(entradas[4], revista);
 
-    } catch(FileNotFoundException e1) { // Caso algum dos arquivos não exista
+    // Caso algum dos arquivos de entrada não exista, retorna "Erro de I/O" e encerra o programa
+    } catch(FileNotFoundException e1) {
       System.out.println("Erro de I/O");
-      System.exit(1); // Encerra a execução do programa
-      } catch(NumberFormatException e2){
+      System.exit(1);
+      // Caso haja algum problema parsing (converter string que não é número para número)
+      } catch(NumberFormatException e2) {
       System.out.println("Erro de formatação");
       System.exit(2);
-        }
+      }
 
-    try{
+    try {
       Resumo resumo = new Resumo(revista);
       resumo.escreveResumo();
 

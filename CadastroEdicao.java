@@ -1,7 +1,6 @@
 import java.util.*;
 import java.io.*;
 
-// Exemplo de leitura de arquivo
 public class CadastroEdicao {
   private String entrada;
   private Revista revista;
@@ -14,8 +13,7 @@ public class CadastroEdicao {
     Scanner scanner = new Scanner(arquivo);
 
     while (scanner.hasNext()) {
-      // A leitura da edição funciona de forma diferente. Precisa ser implementado
-      // Obtém todas as linhas do arquivo
+      // Preenche todos os atributos com o conteúdo obtido do arquivo de entrada
       String tema = scanner.nextLine().trim();
       String editor = scanner.nextLine().trim();
       int volume = Integer.parseInt(scanner.nextLine().trim());

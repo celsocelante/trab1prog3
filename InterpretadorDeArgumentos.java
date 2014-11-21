@@ -1,7 +1,7 @@
-public class Leitura {
+public class InterpretadorDeArgumentos {
 	private String[] entradas;
 
-	public Leitura(String[] args){
+	public InterpretadorDeArgumentos(String[] args){
 		entradas = new String[5];
 
 	    if(args.length != 10){
@@ -33,7 +33,7 @@ public class Leitura {
 	      System.exit(1);
 	    }
 	}
-
+	// Método para retornar o que foi processado pelo classe
 	public String[] retornaEntradas(){
 		return entradas;
 	}

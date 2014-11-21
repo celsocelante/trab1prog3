@@ -31,8 +31,7 @@ public class CadastroArtigos {
         // Separa os autores e vincula todos a um artigo
         NoncollapsingStringTokenizer token2 = new NoncollapsingStringTokenizer(autores, ",");
         while (token2.hasMoreTokens()){
-
-
+          
           int cdg = Integer.parseInt(token2.nextToken().trim());
 
           Colaborador c = revista.buscaColaborador(cdg);

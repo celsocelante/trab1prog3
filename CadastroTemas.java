@@ -1,7 +1,6 @@
 import java.util.*;
 import java.io.*;
 
-// Exemplo de leitura de arquivo
 public class CadastroTemas {
   private String entrada;
   private Revista revista;
@@ -38,7 +37,6 @@ public class CadastroTemas {
             // Procura o colaborador no conjunto de colaboradores da revista
             int cdg = Integer.parseInt(revisor.nextToken().trim());
             Colaborador c = revista.buscaColaborador(cdg);
-            // Vincula o colaborador encontrado ao tema construído
             // Trata a inconsistencia #3: não há revisor correspondente no cadastro de pessoas
             if (c == null || c instanceof Autor) {
               Inconsistencia i = new Inconsistencia("O código " + cdg + " associado ao tema " + nome + "nao corresponde a um revisor cadastrado.",3);
