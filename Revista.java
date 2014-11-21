@@ -70,6 +70,10 @@ public class Revista {
 		return edicao;
 	}
 
+	public Set<Colaborador> getColaboradores(){
+		return colaboradores;
+	}
+
 	public Set<Inconsistencia> getInconsistencias() {
 		return inconsistencias;
 	}

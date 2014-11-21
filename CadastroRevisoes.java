@@ -31,7 +31,7 @@ public class CadastroRevisoes {
           Colaborador c = revista.buscaColaborador(revisor);
           // Trata inconsistencia #8: revisor em revisoes.csv não está cadastrado
           if(c == null || !(c instanceof Revisor)) {
-            Inconsistencia i = new Inconsistencia("O código " + revisor + " encontrado no cadastro de revisões não corresponde a um revisor cadastrado", 8);
+            Inconsistencia i = new Inconsistencia("O código " + revisor + " encontrado no cadastro de revisões não corresponde a um revisor cadastrado.", 8);
             revista.adicionaInconsistencia(i);
           }
           else {
@@ -44,17 +44,18 @@ public class CadastroRevisoes {
 
             if (artigo == null) {
               // Trata insconsistencia #9: código do artigo não está cadastrado em artigos submetidos à edição
-              Inconsistencia i = new Inconsistencia("O código " + codigo + " encontrado no cadastro de revisões não corresponde a um artigo cadastrado", 9);
+              Inconsistencia i = new Inconsistencia("O código " + codigo + " encontrado no cadastro de revisões não corresponde a um artigo cadastrado.", 9);
               revista.adicionaInconsistencia(i);
             } else {
               artigo.adicionaAvaliacao(avaliacao);
               r.vinculaRevisao(artigo);
 
               // Trata inconsistencia #10: revisor não habilitado a revisar artigo sob tema da edição
-              if(!(revista.getEdicao().getTema().contemRevisor(r))){
-                Inconsistencia i = new Inconsistencia("O revisor " + r.getNome() + " avaliou o artigo " + artigo.getTitulo() + ", porém ele não consta como apto a avaliar o tema " + revista.getEdicao().getTema() + ", desta edição.",10);
-                revista.adicionaInconsistencia(i);
-              }
+              if(revista.getEdicao().getTema() != null)
+                if(!(revista.getEdicao().getTema().contemRevisor(r))){
+                  Inconsistencia i = new Inconsistencia("O revisor " + r.getNome() + " avaliou o artigo " + artigo.getTitulo() + ", porém ele não consta como apto a avaliar o tema." + revista.getEdicao().getTema() + ", desta edição.",10);
+                  revista.adicionaInconsistencia(i);
+                }
             }
           }
 
@@ -65,7 +66,7 @@ public class CadastroRevisoes {
       // Trata inconsistencia #11: artigos revisados com menos ou mais de 3 avaliações
       for(Artigo a : revista.getEdicao().getArtigos()){
         if(!(a.quantidadeRevisoes())){
-          Inconsistencia i = new Inconsistencia("O artigo " + a.getTitulo() + " possui" + a.getQuantidadeRevisoes() + " revisões. Cada artigo deve conter exatamente 3 revisões.", 11);
+          Inconsistencia i = new Inconsistencia("O artigo " + "\"" + a.getTitulo() + "\"" + " possui " + a.getQuantidadeRevisoes() + " revisões. Cada artigo deve conter exatamente 3 revisões.", 11);
           revista.adicionaInconsistencia(i);
         }
       }

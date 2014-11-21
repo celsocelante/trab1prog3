@@ -17,6 +17,10 @@ public class Revisor extends Colaborador {
   	revisoes.add(artigo);
   }
 
+  public boolean participouDaEdicao(){
+    return !revisoes.isEmpty();
+  }
+
   // Getters
   public Set<Artigo> getRevisoes() {
   	return revisoes;

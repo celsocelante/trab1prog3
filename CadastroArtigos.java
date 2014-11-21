@@ -28,10 +28,9 @@ public class CadastroArtigos {
         // Submete o artigo à revista
        (revista.getEdicao()).submeterArtigo(artigo);
          
-        Autor autorContato=null;
+        Autor autorContato = null;
 
         String autores = token.nextToken().trim();
-        System.out.println("asdsadas"+autores);
 
         // Separa os autores e vincula todos a um artigo
         NoncollapsingStringTokenizer token2 = new NoncollapsingStringTokenizer(autores, ",");
@@ -43,12 +42,13 @@ public class CadastroArtigos {
 
           // Trata a inconsistencia #6: autor não corresponde a um autor no cadastro de pessoas
           if(c==null || !(c instanceof Autor)){
-            Inconsistencia i = new Inconsistencia("O código " + cdg + " associado ao artigo " + titulo + " não corresponde a um autor cadastrado.",6);
+            Inconsistencia i = new Inconsistencia("O código " + cdg + " associado ao artigo " + "\"" + titulo + "\"" + " não corresponde a um autor cadastrado.",6);
             revista.adicionaInconsistencia(i);
           }else{
             Autor autor = (Autor)c;
             autorContato = autor;
             artigo.vinculaAutor(autor);
+            artigo.setContato(autorContato);
            }
         }
 
@@ -57,25 +57,22 @@ public class CadastroArtigos {
           
           Colaborador c = revista.buscaColaborador(contato);
           if(c==null || !(c instanceof Autor)){
-            Inconsistencia i = new Inconsistencia("O código " + codigo + " associado ao artigo " + titulo + " não corresponde a um autor cadastrado.",6);
+            Inconsistencia i = new Inconsistencia("O código " + codigo + " associado ao artigo " + "\"" + titulo  + "\"" + " não corresponde a um autor cadastrado.",6);
             revista.adicionaInconsistencia(i);
           } else {
             Autor autor = (Autor) c;
             if (artigo.contemAutor(autor))
               artigo.setContato(autor);
             else {
-            Inconsistencia i = new Inconsistencia("O código " + contato + " associado ao artigo " + titulo + " não corresponde a um autor cadastrado.",6);
+            Inconsistencia i = new Inconsistencia("O código " + "\"" + autor.getNome() + "\"" + " informado como autor de contato não corresponde a um dos autores do artigo " +  "\"" + titulo + "\".",7);
             revista.adicionaInconsistencia(i);
             }
           }
-        } else artigo.setContato(autorContato);
+        } 
 
       }
 
-      // Trata a exceção de arquivo mal formado
       }
       scanner.close();
-
-      (revista.getEdicao()).imprimeArtigos();
     }
 }

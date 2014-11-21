@@ -67,14 +67,6 @@ public class Edicao {
 		}
 		return null;
 	}
-	// --------------------------------------------
-	public void imprimeArtigos() { // REMOVER 
-		for (Artigo a : submetidos){
-			System.out.println(submetidos.size());
-			System.out.println(a.getCodigo());
-		}
-	}
-	// --------------------------------------------
 
 	// Getters e setters
 	public Tema getTema() {

@@ -32,7 +32,9 @@ public class Artigo implements Comparable<Artigo> {
   }
 
   public String getContato() {
-    return contato.getNome();
+    if(contato==null)
+      return "";
+    else return contato.getNome();
   }
 
   public Set<Avaliacao> getRevisao(){

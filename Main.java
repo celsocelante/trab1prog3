@@ -33,9 +33,13 @@ public class Main {
       Resumo resumo = new Resumo(revista);
       resumo.escreveResumo();
 
-      RelatorioRevisores relatRevisores = new RelatorioRevisores(revista);
-      relatRevisores.escreveRelatorio();
-      
+      if(revista.getInconsistencias().isEmpty()){
+        RelatorioRevisoes relatRevisoes = new RelatorioRevisoes(revista);
+        relatRevisoes.escreveRelatorio();
+        
+        RelatorioRevisores relatRevisores = new RelatorioRevisores(revista);
+        relatRevisores.escreveRelatorio();
+      }
     }catch(IOException e3){
       System.out.println("Erro de I/O");
     }

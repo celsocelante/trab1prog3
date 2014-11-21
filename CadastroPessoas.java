@@ -43,10 +43,10 @@ public class CadastroPessoas{
             revisor.vinculaInstituicao(instituicao);
             revista.adicionaColaborador(revisor);
           } else {
-              // Trata a inconsistencia #5 
+              // Trata a inconsistencia #5: Colaborador cadastrado não é de um tipo válido
               Colaborador colaborador = new Colaborador(nome,email,endereco,senha,cdg);
               revista.adicionaColaborador(colaborador);
-              Inconsistencia i = new Inconsistencia("O tipo de" + colaborador.getNome() + "não é um tipo válido:" + tipo,5);
+              Inconsistencia i = new Inconsistencia("O tipo de " + "\"" + colaborador.getNome() + "\"" + " não é um tipo válido: " + tipo,5);
               revista.adicionaInconsistencia(i);
             }
       }

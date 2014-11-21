@@ -14,7 +14,7 @@ public class Resumo{
 		
 		Edicao edicao = revista.getEdicao();
 
-		FileWriter resumo = new FileWriter("resumo.txt");
+		FileWriter resumo = new FileWriter("relat-resumo.txt");
 		BufferedWriter buffer = new BufferedWriter(resumo);
 
 		buffer.write("EngeSoft, num. " + edicao.getNumero() + ", volume " + edicao.getVolume() + " - " + edicao.getData());
@@ -24,20 +24,19 @@ public class Resumo{
 			buffer.write("Tema: " + edicao.getTema().getTitulo());
 			buffer.newLine();
 		}
-
+		buffer.write("Editor-chefe: ");
 		if(edicao.getEditorChefe()!=null) {
-			buffer.write("Editor-chefe: " + edicao.getEditorChefe().getNome());
+			buffer.write(edicao.getEditorChefe().getNome());
 		}
 		buffer.newLine();		
 		buffer.newLine();
 
 		buffer.write("Consistência dos dados:");
-		buffer.newLine();
 		if (!revista.getInconsistencias().isEmpty())
 			// Imprime no arquivo de saída todas as inconsistências armazenadas no objeto revista
 			for(Inconsistencia i : revista.getInconsistencias()){
-			buffer.write("- "+ i.toString());
 			buffer.newLine();
+			buffer.write("- "+ i.toString());
 			}
 		else {
 			// Caso não haja qualquer inconsistência, uma mensagem informando a situação é inserida no arquivo
