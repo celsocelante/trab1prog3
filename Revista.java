@@ -14,7 +14,7 @@ public class Revista {
 	public Revista(String nome) {
 		this.nome = nome;
 		temas = new HashSet<Tema>();
-		colaboradores = new HashSet<Colaborador>();
+		colaboradores = new TreeSet<Colaborador>();
 		inconsistencias = new TreeSet<Inconsistencia>();
 	}
 
@@ -48,7 +48,7 @@ public class Revista {
 		return null;
 	}
 	
-	public Colaborador buscaColaborador(String nome){
+	public Colaborador buscaColaborador(String nome) {
 		for(Colaborador c: colaboradores){
 			// Tratar caso o colaborador com certo código não esteja no Set
 			if(nome.equals(c.getNome()))
@@ -74,7 +74,7 @@ public class Revista {
 		return inconsistencias;
 	}
 
-	public int getRevisoresEnvolvidos(){
+	public int getRevisoresEnvolvidos() {
 		int qnt=0;
 		for(Colaborador c : colaboradores)
 			if (c instanceof Revisor){
@@ -85,7 +85,7 @@ public class Revista {
 		return qnt;
 	}
 
-	public double getArtigosRevisados(){
+	public double getArtigosRevisados() {
 
 		int totalArtigosRevisados=0;
 		for(Colaborador c : colaboradores)

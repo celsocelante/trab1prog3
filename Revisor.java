@@ -17,12 +17,11 @@ public class Revisor extends Colaborador {
   	revisoes.add(artigo);
   }
 
-  public Set<Artigo> getRevisoes(){
+  public Set<Artigo> getRevisoes() {
   	return revisoes;
   }
 
-  public int getQuantidadeArtigos(){
+  public int getQuantidadeArtigos() {
   	return revisoes.size();
   }
-
 }

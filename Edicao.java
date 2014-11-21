@@ -1,7 +1,7 @@
 import java.util.*;
 import java.text.*;
 
-public class Edicao{
+public class Edicao {
 
 	private int volume, numero;
 	private Date data;
@@ -53,7 +53,7 @@ public class Edicao{
 
 		this.tema = tema;
 		this.editorChefe = editorChefe;
-		submetidos = new HashSet<Artigo>();
+		submetidos = new TreeSet<Artigo>();
 	}
 	// Adiciona um artigo lido ao conjunto de artigos submetidos
 	public void submeterArtigo(Artigo artigo) {

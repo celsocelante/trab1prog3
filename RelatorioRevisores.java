@@ -11,7 +11,7 @@ public class RelatorioRevisores{
 		FileWriter relatorio = new FileWriter("relat-revisores.csv");
 		BufferedWriter buffer = new BufferedWriter(relatorio);
 
-		
+		buffer.write("");
 		buffer.close();
 	}
 }
