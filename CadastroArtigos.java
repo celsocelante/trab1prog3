@@ -23,7 +23,12 @@ public class CadastroArtigos {
         // Salvo os dados em variáveis
         int codigo = Integer.parseInt(token.nextToken().trim());
         String titulo = token.nextToken().trim();
-        Artigo artigo = new Artigo(codigo, titulo);          
+        Artigo artigo = new Artigo(codigo, titulo); 
+
+        // Submete o artigo à revista
+       (revista.getEdicao()).submeterArtigo(artigo);
+         
+        Autor autorContato=null;
 
         String autores = token.nextToken().trim();
         System.out.println("asdsadas"+autores);
@@ -36,13 +41,13 @@ public class CadastroArtigos {
 
           Colaborador c = revista.buscaColaborador(cdg);
 
-          System.out.println(c.getNome());
           // Trata a inconsistencia #6: autor não corresponde a um autor no cadastro de pessoas
           if(c==null || !(c instanceof Autor)){
             Inconsistencia i = new Inconsistencia("O código " + cdg + " associado ao artigo " + titulo + " não corresponde a um autor cadastrado.",6);
             revista.adicionaInconsistencia(i);
           }else{
             Autor autor = (Autor)c;
+            autorContato = autor;
             artigo.vinculaAutor(autor);
            }
         }
@@ -63,10 +68,7 @@ public class CadastroArtigos {
             revista.adicionaInconsistencia(i);
             }
           }
-        }
-        System.out.println(revista.getEdicao().getTema().getTitulo());
-
-        (revista.getEdicao()).submeterArtigo(artigo);
+        } else artigo.setContato(autorContato);
 
       }
 

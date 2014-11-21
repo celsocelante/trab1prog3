@@ -27,7 +27,7 @@ public class Edicao {
 		// Retorna somente o inteiro referente ao ano
 		int ano = calendario.get(Calendar.YEAR);
 		
-		String m;
+		String m="";
 		// De acordo com o inteiro do mês, escolhe-se o nome do mês
 		switch(mes) {
 			case 0: m = "Janeiro"; break;
@@ -53,7 +53,7 @@ public class Edicao {
 
 		this.tema = tema;
 		this.editorChefe = editorChefe;
-		submetidos = new TreeSet<Artigo>();
+		submetidos = new HashSet<Artigo>();
 	}
 	// Adiciona um artigo lido ao conjunto de artigos submetidos
 	public void submeterArtigo(Artigo artigo) {
@@ -69,8 +69,10 @@ public class Edicao {
 	}
 	// --------------------------------------------
 	public void imprimeArtigos() { // REMOVER 
-		for (Artigo a : submetidos)
+		for (Artigo a : submetidos){
+			System.out.println(submetidos.size());
 			System.out.println(a.getCodigo());
+		}
 	}
 	// --------------------------------------------
 

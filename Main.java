@@ -6,7 +6,7 @@ public class Main {
 
     Revista revista = new Revista("EngeSoft");
 
-    Leitura leitura = new InterpretadorDeArgumentos(args);
+    InterpretadorDeArgumentos leitura = new InterpretadorDeArgumentos(args);
 
     // Retorna, depois de interpretado, os nomes dos arquivos de entrada setados por parâmetros
     String[] entradas = leitura.retornaEntradas();

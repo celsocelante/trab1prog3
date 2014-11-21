@@ -1,4 +1,5 @@
 import java.util.*;
+
 public class Artigo implements Comparable<Artigo> {
   private String titulo;
   private int codigo;
@@ -19,14 +20,6 @@ public class Artigo implements Comparable<Artigo> {
 
   public void adicionaAvaliacao(Avaliacao avaliacao) {
     revisoes.add(avaliacao);
-  }
-
-  public boolean contemAutor(Autor autor) {
-    return autores.contains(autor);
-  }
-
-  public boolean quantidadeRevisoes() {
-    return revisoes.size() == 3;
   }
 
   // Getters and setters
@@ -55,11 +48,10 @@ public class Artigo implements Comparable<Artigo> {
   }
 
   public Double getMedia(){
-    Double media;
+    Double media=new Double(0);
     for(Avaliacao a : revisoes)
       media+=a.getSomaNotas();
-
-    return media;
+    return media/3;
   }
 
   public int getQuantidadeRevisoes() {

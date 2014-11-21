@@ -28,19 +28,19 @@ public class CadastroRevisoes {
           double conteudo = Double.parseDouble(token.nextToken().replace(',', '.').trim());
           double apresentacao = Double.parseDouble(token.nextToken().replace(',', '.').trim());
           
-          Revisor r = (Revisor) revista.buscaColaborador(revisor);
+          Colaborador c = revista.buscaColaborador(revisor);
           // Trata inconsistencia #8: revisor em revisoes.csv não está cadastrado
-          if(r == null) {
+          if(c == null || !(c instanceof Revisor)) {
             Inconsistencia i = new Inconsistencia("O código " + revisor + " encontrado no cadastro de revisões não corresponde a um revisor cadastrado", 8);
             revista.adicionaInconsistencia(i);
           }
           else {
+            Revisor r = (Revisor)c;
             Avaliacao avaliacao = new Avaliacao(r);
             avaliacao.atribuirNota(originalidade,conteudo,apresentacao);
 
             Artigo artigo = (revista.getEdicao()).buscaArtigo(codigo);
             // Adiciona artigo à lista de artigos revisados por este revisor
-            r.vinculaRevisao(artigo);
 
             if (artigo == null) {
               // Trata insconsistencia #9: código do artigo não está cadastrado em artigos submetidos à edição
@@ -48,7 +48,7 @@ public class CadastroRevisoes {
               revista.adicionaInconsistencia(i);
             } else {
               artigo.adicionaAvaliacao(avaliacao);
-              
+              r.vinculaRevisao(artigo);
 
               // Trata inconsistencia #10: revisor não habilitado a revisar artigo sob tema da edição
               if(!(revista.getEdicao().getTema().contemRevisor(r))){

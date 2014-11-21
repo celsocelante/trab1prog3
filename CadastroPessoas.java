@@ -53,7 +53,6 @@ public class CadastroPessoas{
 
     }
     scanner.close();
-    revista.imprimeColaboradores();
   }
 
 }
