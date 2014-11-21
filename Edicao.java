@@ -10,7 +10,7 @@ public class Edicao {
 	private Set<Artigo> submetidos;
 	private Colaborador editorChefe;
 
-	public Edicao(int volume, int numero, String data, Tema tema, Colaborador editorChefe) {
+	public Edicao (int volume, int numero, String data, Tema tema, Colaborador editorChefe) {
 		this.volume = volume;
 		this.numero = numero;
 
