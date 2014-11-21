@@ -38,6 +38,8 @@ public class Artigo implements Comparable<Artigo> {
     return contato.getNome();
   }
 
+  
+
   public boolean contemAutor(Autor autor) {
     return autores.contains(autor);
   }
@@ -51,6 +53,6 @@ public class Artigo implements Comparable<Artigo> {
   }
 
   public int compareTo(Artigo a) {
-    return this.titulo.compareTo(a.getTitulo());
+    return revisoes.getMedia().compareTo(a.)
   }  
 }
