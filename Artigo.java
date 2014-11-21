@@ -1,5 +1,5 @@
 import java.util.*;
-public class Artigo {
+public class Artigo implements Comparable<Artigo> {
   private String titulo;
   private int codigo;
   private Set<Autor> autores;

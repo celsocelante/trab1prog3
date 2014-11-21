@@ -6,7 +6,7 @@ public class Revisor extends Colaborador {
   public Revisor(String nome, String email, String endereco, String senha, int codigo) {
     super(nome,email,endereco,senha,codigo);
     instituicoes = new HashSet<String>();
-    revisoes = new HashSet<Artigo>();
+    revisoes = new TreeSet<Artigo>();
   }
 
   public void vinculaInstituicao(String inst) {

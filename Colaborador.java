@@ -1,4 +1,4 @@
-public class Colaborador {
+public class Colaborador implements Comparable<Colaborador>{
 	protected String nome;
 	protected String email;
 	protected String endereco;
@@ -10,6 +10,10 @@ public class Colaborador {
 		this.endereco = endereco;
 		this.codigo = codigo;
 		this.senha = senha;
+	}
+
+	public int compareTo(Colaborador c){
+		return this.nome.compareTo(c.getNome());
 	}
 
 	public int getCodigo(){

@@ -48,12 +48,10 @@ public class Resumo{
 			buffer.newLine();
 			buffer.write("Revisores envolvidos: " + revista.getRevisoresEnvolvidos());
 			buffer.newLine();
-			Locale.setDefault(new Locale("pt", "BR")); 
-			DecimalFormat df = new DecimalFormat("###,##"); 
+			NumberFormat nf = new DecimalFormat("###0.00", new DecimalFormatSymbols (new Locale("pt","BR")));
 			double media = revista.getArtigosRevisados()/revista.getRevisoresEnvolvidos();
-			df.format(media); 
-
-			buffer.write("Média artigos/revisor: " + media);
+			
+			buffer.write("Média artigos/revisor: " + nf.format(media));
 		}
 		
 		buffer.close();
