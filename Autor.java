@@ -7,6 +7,7 @@ public class Autor extends Colaborador {
       instituicoes = new HashSet<String>();
     }
 
+	// Adiciona uma instituição ao conjunto de instituições de um autor
     public void vinculaInstituicao(String inst) {
       instituicoes.add(inst);
     }
